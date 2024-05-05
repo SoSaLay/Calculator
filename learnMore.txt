@@ -1,0 +1,57 @@
+document.querySelectorAll('.num').forEach(button=>{
+    button.addEventListener('click',function(){
+            if(display.innerText==='0'){
+                display.innerText=this.innerText;
+            }else{
+                display.innerText+=this.innerText;
+        }
+
+    })
+})
+
+^How Does it Work??
+
+1.Since you us “document.querySelectorAll()” to target multiple elements within 
+a class it will actually create a data type called NodeList. 
+Node lIst is essentially an array with some restrictions.
+
+The freedom with NodeList is that you can target it like an array 
+and loop through the contents(for loop or .forEach) performing 
+action on each element. 
+
+The restrictions is you can’t do 
+traditional array methods like **`.push()`**, **`.pop()`**, **`.shift().`** 
+If you want to get more advanced you have to convert it then proceed. 
+To covert set the node list to a variable then pass it 
+through this method of: Array.from()
+
+2.Then use "forEach". Code is easier to look at and does 
+the same as for loop. You pass button parameter to access 
+and manipulate each button element as the loop iterates over the NodeList.
+
+Now we attach an event listener to each button. 
+The function will execute every time a button is clicked. 
+The function runs a conditional to define what happens when button is clicked.
+
+3.display is our html element then .innerText is a JS property 
+that allows you to get or set the text content of an HTML element. 
+Changing the visible text inside that element. 
+
+ If the display is "0" it is set  to the text of the clicked button.
+ “this.innerText” gets the text content of that button.  
+ If the display doesn't show "0",  Then the clicked button's text is added to the 
+ line of what's already shown, letting you enter several digits.
+
+4.The outer function (forEach) is used to apply the same logic to 
+each button with class .num. Inner function (event listener) defines  
+specific behavior during event. We nested the functions so each button 
+has an independent response when clicked but still share the same functionality
+
+/////////////////////////////////
+we can do this because we know when the user clicks a number, all they're doing is  
+replacing or appending the number to the existing content, 
+depending on what's currently shown on the display.
+
+It’s easier to think of coding logic if you think about user interactions.  
+Consider what the user will need to do with your app and how 
+they will interact with it
